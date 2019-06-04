@@ -6,7 +6,7 @@
 
 ## 界面
 
-![shot](/Assets/shot1.png "shot")
+![shot](/Assets/shot1.jpg "shot")
 
 
-![shot](/Assets/shot2.png "shot")
+![shot](/Assets/shot2.jpg "shot")
