@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BatchFileConvertor")]
-[assembly: AssemblyCopyright("Copyright © Fallstar0@qq.com 2019")]
+[assembly: AssemblyCopyright("Copyright © fallstar0@qq.com 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
