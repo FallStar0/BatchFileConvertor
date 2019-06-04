@@ -119,6 +119,7 @@
             // 
             // txtBrowseIn
             // 
+            this.txtBrowseIn.AllowDrop = true;
             this.txtBrowseIn.Location = new System.Drawing.Point(13, 39);
             this.txtBrowseIn.Name = "txtBrowseIn";
             this.txtBrowseIn.Size = new System.Drawing.Size(441, 29);
@@ -129,9 +130,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 21);
+            this.label1.Size = new System.Drawing.Size(244, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "输入路径(目录)：";
+            this.label1.Text = "输入路径(可以拖动文件夹进去)：";
             // 
             // tabPage3
             // 
@@ -194,9 +195,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 21);
+            this.label2.Size = new System.Drawing.Size(244, 21);
             this.label2.TabIndex = 0;
-            this.label2.Text = "输出路径：";
+            this.label2.Text = "输出路径(可以拖动文件夹进去)：";
             // 
             // cbIsRecursive
             // 
@@ -220,6 +221,7 @@
             // 
             // txtBrowseOut
             // 
+            this.txtBrowseOut.AllowDrop = true;
             this.txtBrowseOut.Location = new System.Drawing.Point(13, 38);
             this.txtBrowseOut.Name = "txtBrowseOut";
             this.txtBrowseOut.Size = new System.Drawing.Size(441, 29);

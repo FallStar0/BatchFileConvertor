@@ -61,14 +61,13 @@ namespace BatchFileConvertor
             if (!Directory.Exists(inputDir))
                 throw new DirectoryNotFoundException();
 
-            if (!Directory.Exists(outputDir))
-            {
-                Directory.CreateDirectory(outputDir);
-            }
-
             var files = Directory.GetFiles(inputDir);
             if (files != null && files.Length > 0)
             {
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
                 foreach (var item in files)
                 {
                     if (!IsFileEndWith(subfixs, item)) continue;

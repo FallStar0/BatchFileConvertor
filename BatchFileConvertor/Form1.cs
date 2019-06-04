@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +15,7 @@ namespace BatchFileConvertor
         }
 
         #region Events
+
         /// <summary>
         /// 初始化
         /// </summary>
@@ -66,12 +61,30 @@ namespace BatchFileConvertor
 
             btnToCHT.Click += async (s, e) => await Convert2CHT();
             btnToCHS.Click += async (s, e) => await Convert2CHS();
+
+            txtBrowseIn.DragEnter += (s, e) => e.Effect = DragDropEffects.Link;
+            txtBrowseIn.DragDrop += (s, e) =>
+            {
+                var t = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+                if (!System.IO.Directory.Exists(t)) return;
+                ((TextBox)s).Text = t;
+            };
+
+            txtBrowseOut.DragEnter += (s, e) => e.Effect = DragDropEffects.Link;
+            txtBrowseOut.DragDrop += (s, e) =>
+            {
+                var t = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+                if (!System.IO.Directory.Exists(t)) return;
+                ((TextBox)s).Text = t;
+            };
         }
+
         #endregion
 
         #region 转换
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         private bool Prepare()
@@ -170,6 +183,7 @@ namespace BatchFileConvertor
                 act(log);
             }
         }
+
         #endregion
     }
 }
