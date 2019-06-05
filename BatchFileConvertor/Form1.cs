@@ -83,6 +83,9 @@ namespace BatchFileConvertor
                 rbVBMode.Checked = true;
             else
                 rbSysMode.Checked = true;
+
+            llbGitee.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://gitee.com/fallstar/BatchFileConvertor");
+            llbGithub.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://github.com/FallStar0/BatchFileConvertor");
         }
 
         #endregion

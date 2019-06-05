@@ -37,21 +37,23 @@
             this.txtBrowseIn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSysMode = new System.Windows.Forms.RadioButton();
+            this.rbVBMode = new System.Windows.Forms.RadioButton();
             this.btnConfigReset = new System.Windows.Forms.Button();
             this.btnConfigApply = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBrowseOut = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbVBMode = new System.Windows.Forms.RadioButton();
-            this.rbSysMode = new System.Windows.Forms.RadioButton();
             this.cbIsCaseSensitive = new System.Windows.Forms.CheckBox();
             this.cbIgoreUnchangeFile = new System.Windows.Forms.CheckBox();
             this.cbIsRecursive = new System.Windows.Forms.CheckBox();
             this.txtIgoreFolder = new System.Windows.Forms.TextBox();
             this.txtSubfix = new System.Windows.Forms.TextBox();
             this.txtBrowseOut = new System.Windows.Forms.TextBox();
+            this.llbGithub = new System.Windows.Forms.LinkLabel();
+            this.llbGitee = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -147,6 +149,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.llbGitee);
+            this.tabPage3.Controls.Add(this.llbGithub);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.btnConfigReset);
             this.tabPage3.Controls.Add(this.btnConfigApply);
@@ -167,6 +171,39 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "配置";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbSysMode);
+            this.groupBox1.Controls.Add(this.rbVBMode);
+            this.groupBox1.Location = new System.Drawing.Point(225, 224);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(244, 100);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "转换模式";
+            // 
+            // rbSysMode
+            // 
+            this.rbSysMode.AutoSize = true;
+            this.rbSysMode.Location = new System.Drawing.Point(6, 60);
+            this.rbSysMode.Name = "rbSysMode";
+            this.rbSysMode.Size = new System.Drawing.Size(198, 25);
+            this.rbSysMode.TabIndex = 0;
+            this.rbSysMode.TabStop = true;
+            this.rbSysMode.Text = "系统模式(需要中文系统)";
+            this.rbSysMode.UseVisualStyleBackColor = true;
+            // 
+            // rbVBMode
+            // 
+            this.rbVBMode.AutoSize = true;
+            this.rbVBMode.Location = new System.Drawing.Point(7, 29);
+            this.rbVBMode.Name = "rbVBMode";
+            this.rbVBMode.Size = new System.Drawing.Size(143, 25);
+            this.rbVBMode.TabIndex = 0;
+            this.rbVBMode.TabStop = true;
+            this.rbVBMode.Text = "VisualBasic模式";
+            this.rbVBMode.UseVisualStyleBackColor = true;
             // 
             // btnConfigReset
             // 
@@ -224,39 +261,6 @@
             this.label2.Size = new System.Drawing.Size(244, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "输出路径(可以拖动文件夹进去)：";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbSysMode);
-            this.groupBox1.Controls.Add(this.rbVBMode);
-            this.groupBox1.Location = new System.Drawing.Point(225, 224);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 100);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "转换模式";
-            // 
-            // rbVBMode
-            // 
-            this.rbVBMode.AutoSize = true;
-            this.rbVBMode.Location = new System.Drawing.Point(7, 29);
-            this.rbVBMode.Name = "rbVBMode";
-            this.rbVBMode.Size = new System.Drawing.Size(143, 25);
-            this.rbVBMode.TabIndex = 0;
-            this.rbVBMode.TabStop = true;
-            this.rbVBMode.Text = "VisualBasic模式";
-            this.rbVBMode.UseVisualStyleBackColor = true;
-            // 
-            // rbSysMode
-            // 
-            this.rbSysMode.AutoSize = true;
-            this.rbSysMode.Location = new System.Drawing.Point(6, 60);
-            this.rbSysMode.Name = "rbSysMode";
-            this.rbSysMode.Size = new System.Drawing.Size(198, 25);
-            this.rbSysMode.TabIndex = 0;
-            this.rbSysMode.TabStop = true;
-            this.rbSysMode.Text = "系统模式(需要中文系统)";
-            this.rbSysMode.UseVisualStyleBackColor = true;
             // 
             // cbIsCaseSensitive
             // 
@@ -328,6 +332,28 @@
             this.txtBrowseOut.TabIndex = 1;
             this.txtBrowseOut.Text = global::BatchFileConvertor.Properties.Settings.Default.OutputDir;
             // 
+            // llbGithub
+            // 
+            this.llbGithub.AutoSize = true;
+            this.llbGithub.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.llbGithub.Location = new System.Drawing.Point(9, 415);
+            this.llbGithub.Name = "llbGithub";
+            this.llbGithub.Size = new System.Drawing.Size(62, 21);
+            this.llbGithub.TabIndex = 8;
+            this.llbGithub.TabStop = true;
+            this.llbGithub.Text = "Github";
+            // 
+            // llbGitee
+            // 
+            this.llbGitee.AutoSize = true;
+            this.llbGitee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.llbGitee.Location = new System.Drawing.Point(77, 415);
+            this.llbGitee.Name = "llbGitee";
+            this.llbGitee.Size = new System.Drawing.Size(82, 21);
+            this.llbGitee.TabIndex = 8;
+            this.llbGitee.TabStop = true;
+            this.llbGitee.Text = "码云Gitee";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -377,6 +403,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbVBMode;
         private System.Windows.Forms.RadioButton rbSysMode;
+        private System.Windows.Forms.LinkLabel llbGithub;
+        private System.Windows.Forms.LinkLabel llbGitee;
     }
 }
 
