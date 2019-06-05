@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChineseStringUtility.cs" />
+    <Compile Include="SysConstants.cs" />
     <Compile Include="ConvertContext.cs" />
     <Compile Include="ConvertLogic.cs" />
     <Compile Include="EncodingHelper.cs" />

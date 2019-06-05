@@ -22,6 +22,7 @@ namespace BatchFileConvertor
         /// </summary>
         private void Init()
         {
+            this.Text += " v" + SysConstants.AppVersion;
             logic.Logger = Log;
             var cfg = Properties.Settings.Default;
 
