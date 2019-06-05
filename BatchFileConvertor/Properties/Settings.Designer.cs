@@ -106,5 +106,17 @@ namespace BatchFileConvertor.Properties {
                 this["ConvertMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte OutputEncoding {
+            get {
+                return ((byte)(this["OutputEncoding"]));
+            }
+            set {
+                this["OutputEncoding"] = value;
+            }
+        }
     }
 }

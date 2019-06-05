@@ -23,6 +23,7 @@ namespace BatchFileConvertor
         private void Init()
         {
             logic.Logger = Log;
+            var cfg = Properties.Settings.Default;
 
             this.btnBrowseIn.Click += (s, e) =>
             {
@@ -52,12 +53,16 @@ namespace BatchFileConvertor
 
             this.btnConfigApply.Click += (s, e) =>
             {
-                Properties.Settings.Default.Save();
+                cfg.ConvertMode = (byte)(rbSysMode.Checked ? ConvertMode.System : ConvertMode.VB);
+                cfg.OutputEncoding = (byte)(rbOutputDefault.Checked ? EncodingType.Default : EncodingType.UTF8);
+                cfg.Save();
             };
             this.btnConfigReset.Click += (s, e) =>
             {
-                Properties.Settings.Default.Reset();
-                Properties.Settings.Default.Save();
+                rbSysMode.Checked = true;
+                rbOutputDefault.Checked = true;
+                cfg.Reset();
+                cfg.Save();
             };
 
             btnToCHT.Click += async (s, e) => await Convert2CHT();
@@ -67,7 +72,7 @@ namespace BatchFileConvertor
             txtBrowseIn.DragDrop += (s, e) =>
             {
                 var t = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-                if (!System.IO.Directory.Exists(t)) return;
+                if (!System.IO.Directory.Exists(t) && !System.IO.File.Exists(t)) return;
                 ((TextBox)s).Text = t;
             };
 
@@ -78,11 +83,17 @@ namespace BatchFileConvertor
                 if (!System.IO.Directory.Exists(t)) return;
                 ((TextBox)s).Text = t;
             };
-            var mode = (ConvertMode)Properties.Settings.Default.ConvertMode;
-            if (mode == 0)
+            var mode = (ConvertMode)cfg.ConvertMode;
+            if (mode == ConvertMode.VB)
                 rbVBMode.Checked = true;
             else
                 rbSysMode.Checked = true;
+
+            var enc = (EncodingType)cfg.OutputEncoding;
+            if (enc == EncodingType.Default)
+                rbOutputDefault.Checked = true;
+            else
+                rbOutputUTF8.Checked = true;
 
             llbGitee.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://gitee.com/fallstar/BatchFileConvertor");
             llbGithub.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://github.com/FallStar0/BatchFileConvertor");
@@ -129,7 +140,9 @@ namespace BatchFileConvertor
             prop.SupportSubfix = txtSubfix.Text.Trim();
             t = prop.SupportSubfix;
             ctx.Subfix = t.Split(',').Where(x => !string.IsNullOrEmpty(x)).Select(y => y.ToLower()).ToList();
+
             ctx.Mode = rbVBMode.Checked ? ConvertMode.VB : ConvertMode.System;
+            ctx.OutputEncoding = rbOutputDefault.Checked ? EncodingType.Default : EncodingType.UTF8;
             return ctx;
         }
 

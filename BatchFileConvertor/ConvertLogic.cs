@@ -39,6 +39,14 @@ namespace BatchFileConvertor
 
             context.CurrentCount = 0;
 
+            if (File.Exists(context.RootInputDirectory))
+            {
+                var f = context.RootInputDirectory;
+                var fi = new FileInfo(f);
+                ConvertFile(f, Path.Combine(context.RootOutputDirectory, fi.Name), context);
+                return;
+            }
+
             Convert(context.RootInputDirectory, context.RootOutputDirectory, context);
         }
 
@@ -66,16 +74,8 @@ namespace BatchFileConvertor
 
                     var fi = new FileInfo(item);
                     var fn = fi.Name;
-
-                    var text = File.ReadAllText(item);
-                    var txt2 = context.Convertor(text);
-                    if (context.IsIgnoreUnchangeFile && txt2 == text)
-                        continue;
                     var textPath = Path.Combine(outputDir, fn);
-                    File.WriteAllText(textPath, txt2, Encoding.UTF8);
-                    if (Logger != null)
-                        Logger(textPath);
-                    context.CurrentCount++;
+                    ConvertFile(item, textPath, context);
                 }
             }
 
@@ -95,6 +95,26 @@ namespace BatchFileConvertor
                 var op = Path.Combine(outputDir, n);
                 Convert(item, op, context);
             }
+        }
+
+        /// <summary>
+        /// 转换并输出文件
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
+        /// <param name="context"></param>
+        private void ConvertFile(string source, string target, ConvertContext context)
+        {
+            var enc = EncodingHelper.GetType(source);
+            var text = File.ReadAllText(source, enc);
+            var txt2 = context.Convertor(text);
+            if (context.IsIgnoreUnchangeFile && txt2 == text)
+                return;
+
+            File.WriteAllText(target, txt2, context.OutputEncoding == EncodingType.Default ? enc : Encoding.UTF8);
+            if (Logger != null)
+                Logger(target);
+            context.CurrentCount++;
         }
 
         /// <summary>
@@ -136,21 +156,5 @@ namespace BatchFileConvertor
             return Strings.StrConv(text, VbStrConv.SimplifiedChinese, 0);
         }
 
-
-    }
-
-    /// <summary>
-    /// 转换模式
-    /// </summary>
-    public enum ConvertMode : byte
-    {
-        /// <summary>
-        /// 使用VisualBasic类库转换
-        /// </summary>
-        VB = 0,
-        /// <summary>
-        /// 使用系统转换
-        /// </summary>
-        System = 1,
     }
 }

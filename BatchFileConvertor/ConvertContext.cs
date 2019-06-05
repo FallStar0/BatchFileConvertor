@@ -49,5 +49,9 @@ namespace BatchFileConvertor
         /// 转换模式
         /// </summary>
         public ConvertMode Mode { get; set; }
+        /// <summary>
+        /// 输出编码
+        /// </summary>
+        public EncodingType OutputEncoding { get; set; }
     }
 }
