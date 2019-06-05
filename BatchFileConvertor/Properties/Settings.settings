@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CHS2CHT.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BatchFileConvertor.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="IsRecursive" Type="System.Boolean" Scope="User">
@@ -9,7 +9,19 @@
       <Value Profile="(Default)">.\Output</Value>
     </Setting>
     <Setting Name="SupportSubfix" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.cs,.js</Value>
+      <Value Profile="(Default)">.cs,.js,.json,.cshtml,.html</Value>
+    </Setting>
+    <Setting Name="IsIgnoreUnchangeFile" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IgnoreFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bin,obj</Value>
+    </Setting>
+    <Setting Name="IsCaseSensitive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ConvertMode" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

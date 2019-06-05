@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace BatchFileConvertor
 {
@@ -77,6 +78,11 @@ namespace BatchFileConvertor
                 if (!System.IO.Directory.Exists(t)) return;
                 ((TextBox)s).Text = t;
             };
+            var mode = (ConvertMode)Properties.Settings.Default.ConvertMode;
+            if (mode == 0)
+                rbVBMode.Checked = true;
+            else
+                rbSysMode.Checked = true;
         }
 
         #endregion
@@ -87,28 +93,41 @@ namespace BatchFileConvertor
         ///
         /// </summary>
         /// <returns></returns>
-        private bool Prepare()
+        private ConvertContext Prepare()
         {
             var prop = Properties.Settings.Default;
-            var txtIn = txtBrowseIn.Text;
+            var ctx = new ConvertContext()
+            {
+                IsIgnoreUnchangeFile = prop.IsIgnoreUnchangeFile,
+                IsRecursive = prop.IsRecursive,
+                RootInputDirectory = txtBrowseIn.Text,
+                RootOutputDirectory = txtBrowseOut.Text,
+            };
 
-            if (string.IsNullOrEmpty(txtIn))
+            if (string.IsNullOrEmpty(ctx.RootInputDirectory))
             {
                 MessageBox.Show("输入路径不能为空！");
-                return false;
+                return null;
             }
-            if (string.IsNullOrEmpty(prop.OutputDir))
+            if (string.IsNullOrEmpty(ctx.RootOutputDirectory))
             {
                 MessageBox.Show("输出路径不能为空！");
-                return false;
+                return null;
             }
             if (string.IsNullOrEmpty(prop.SupportSubfix))
             {
                 MessageBox.Show("支持拓展名不能为空！");
-                return false;
+                return null;
             }
 
-            return true;
+            var t = prop.IgnoreFolder;
+            if (!string.IsNullOrEmpty(t))
+                ctx.IgnoreFolders = t.Split(',').Where(x => !string.IsNullOrEmpty(x)).ToList();
+            prop.SupportSubfix = txtSubfix.Text.Trim();
+            t = prop.SupportSubfix;
+            ctx.Subfix = t.Split(',').Where(x => !string.IsNullOrEmpty(x)).Select(y => y.ToLower()).ToList();
+            ctx.Mode = rbVBMode.Checked ? ConvertMode.VB : ConvertMode.System;
+            return ctx;
         }
 
         /// <summary>
@@ -116,7 +135,12 @@ namespace BatchFileConvertor
         /// </summary>
         private async Task Convert2CHT()
         {
-            if (!Prepare()) return;
+            var ctx = Prepare();
+            if (ctx == null) return;
+            if (ctx.Mode == ConvertMode.VB)
+                ctx.Convertor = logic.ToCHT;
+            else
+                ctx.Convertor = ChineseStringUtility.ToTraditional;
             txtLog.Clear();
             btnToCHS.Enabled = false;
             btnToCHT.Enabled = false;
@@ -124,8 +148,8 @@ namespace BatchFileConvertor
             var txtIn = txtBrowseIn.Text;
             try
             {
-                await Task.Run(() => logic.Begin(txtIn, prop.OutputDir, logic.CHS2CHT, prop.SupportSubfix, prop.IsRecursive));
-                Log($"成功转换文件：{logic.CurrentCount}个");
+                await Task.Run(() => logic.Begin(ctx));
+                Log($"成功转换文件：{ctx.CurrentCount}个");
             }
             catch (Exception ex)
             {
@@ -144,7 +168,12 @@ namespace BatchFileConvertor
         /// </summary>
         private async Task Convert2CHS()
         {
-            if (!Prepare()) return;
+            var ctx = Prepare();
+            if (ctx == null) return;
+            if (ctx.Mode == ConvertMode.VB)
+                ctx.Convertor = logic.ToCHS;
+            else
+                ctx.Convertor = ChineseStringUtility.ToSimplified;
             txtLog.Clear();
             btnToCHS.Enabled = false;
             btnToCHT.Enabled = false;
@@ -152,8 +181,8 @@ namespace BatchFileConvertor
             var txtIn = txtBrowseIn.Text;
             try
             {
-                await Task.Run(() => logic.Begin(txtIn, prop.OutputDir, logic.CHT2CHS, prop.SupportSubfix, prop.IsRecursive));
-                Log($"成功转换文件：{logic.CurrentCount}个");
+                await Task.Run(() => logic.Begin(ctx));
+                Log($"成功转换文件：{ctx.CurrentCount}个");
             }
             catch (Exception ex)
             {

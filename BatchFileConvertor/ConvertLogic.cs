@@ -17,35 +17,29 @@ namespace BatchFileConvertor
         /// 日志输出
         /// </summary>
         public Action<string> Logger { get; set; }
-        /// <summary>
-        /// 当前计数
-        /// </summary>
-        public int CurrentCount { get; private set; }
 
         /// <summary>
         /// 将传入的文件，简体繁体转换
         /// </summary>
-        /// <param name="inputDir">输入路径</param>
-        /// <param name="outputDir">输出路径</param>
-        /// <param name="convertor">转换器</param>
-        /// <param name="subfix">拓展名，如 .cs</param>
-        /// <param name="isRecursive">是否递归</param>
-        public void Begin(string inputDir, string outputDir, Func<string, string> convertor, string subfix, bool isRecursive = true)
+        /// <param name="context">上下文</param>
+        public void Begin(ConvertContext context)
         {
-            if (string.IsNullOrEmpty(inputDir))
-                throw new ArgumentNullException(nameof(inputDir));
-            if (string.IsNullOrEmpty(outputDir))
-                throw new ArgumentNullException(nameof(outputDir));
-            if (convertor == null)
-                throw new ArgumentNullException(nameof(convertor));
-            if (string.IsNullOrEmpty(subfix))
-                throw new ArgumentNullException(nameof(subfix));
-            var sp = subfix.Split(',');
-            var sub = sp.Where(x => !string.IsNullOrEmpty(x)).Select(y => y.Trim().ToLower()).ToList();
-            CurrentCount = 0;
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
 
-            Convert(inputDir, outputDir, convertor, sub, isRecursive);
+            if (string.IsNullOrEmpty(context.RootInputDirectory))
+                throw new ArgumentNullException(nameof(context.RootInputDirectory));
+            if (string.IsNullOrEmpty(context.RootOutputDirectory))
+                throw new ArgumentNullException(nameof(context.RootOutputDirectory));
 
+            if (context.Convertor == null)
+                throw new ArgumentNullException(nameof(context.Convertor));
+            if (context.Subfix == null || context.Subfix.Count == 0)
+                throw new ArgumentException(nameof(context.Subfix));
+
+            context.CurrentCount = 0;
+
+            Convert(context.RootInputDirectory, context.RootOutputDirectory, context);
         }
 
         /// <summary>
@@ -53,10 +47,8 @@ namespace BatchFileConvertor
         /// </summary>
         /// <param name="inputDir">输入路径</param>
         /// <param name="outputDir">输出路径</param>
-        /// <param name="convertor">转换器</param>
-        /// <param name="subfixs">拓展名，如 .cs</param>
-        /// <param name="isRecursive">是否递归</param>
-        private void Convert(string inputDir, string outputDir, Func<string, string> convertor, List<string> subfixs, bool isRecursive = true)
+        /// <param name="context">上下文</param>
+        private void Convert(string inputDir, string outputDir, ConvertContext context)
         {
             if (!Directory.Exists(inputDir))
                 throw new DirectoryNotFoundException();
@@ -70,23 +62,24 @@ namespace BatchFileConvertor
                 }
                 foreach (var item in files)
                 {
-                    if (!IsFileEndWith(subfixs, item)) continue;
+                    if (!IsFileEndWith(context.Subfix, item)) continue;
 
                     var fi = new FileInfo(item);
                     var fn = fi.Name;
 
                     var text = File.ReadAllText(item);
-                    var txt2 = convertor(text);
+                    var txt2 = context.Convertor(text);
+                    if (context.IsIgnoreUnchangeFile && txt2 == text)
+                        continue;
                     var textPath = Path.Combine(outputDir, fn);
-
-                    File.WriteAllText(textPath, txt2);
+                    File.WriteAllText(textPath, txt2, Encoding.UTF8);
                     if (Logger != null)
                         Logger(textPath);
-                    CurrentCount++;
+                    context.CurrentCount++;
                 }
             }
 
-            if (!isRecursive) return;
+            if (!context.IsRecursive) return;
             var dirs = Directory.GetDirectories(inputDir);
             if (dirs == null || dirs.Length == 0) return;
 
@@ -94,8 +87,13 @@ namespace BatchFileConvertor
             {
                 var di = new DirectoryInfo(item);
                 var n = di.Name;
+                if (context.IgnoreFolders != null && context.IgnoreFolders.Count > 0)
+                {
+                    if (context.IgnoreFolders.Contains(n))
+                        continue;
+                }
                 var op = Path.Combine(outputDir, n);
-                Convert(item, op, convertor, subfixs, isRecursive);
+                Convert(item, op, context);
             }
         }
 
@@ -115,25 +113,44 @@ namespace BatchFileConvertor
             return false;
         }
 
+
+
         /// <summary>
-        /// 简体转繁体
+        /// 转繁体
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public string CHS2CHT(string text)
+        public string ToCHT(string text)
         {
             return Strings.StrConv(text, VbStrConv.TraditionalChinese, 0);
         }
 
 
         /// <summary>
-        /// 繁体转简体
+        /// 转简体
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public string CHT2CHS(string text)
+        public string ToCHS(string text)
         {
             return Strings.StrConv(text, VbStrConv.SimplifiedChinese, 0);
         }
+
+
+    }
+
+    /// <summary>
+    /// 转换模式
+    /// </summary>
+    public enum ConvertMode : byte
+    {
+        /// <summary>
+        /// 使用VisualBasic类库转换
+        /// </summary>
+        VB = 0,
+        /// <summary>
+        /// 使用系统转换
+        /// </summary>
+        System = 1,
     }
 }

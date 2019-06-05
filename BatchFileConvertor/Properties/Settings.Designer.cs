@@ -49,13 +49,61 @@ namespace BatchFileConvertor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".cs,.js")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".cs,.js,.json,.cshtml,.html")]
         public string SupportSubfix {
             get {
                 return ((string)(this["SupportSubfix"]));
             }
             set {
                 this["SupportSubfix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsIgnoreUnchangeFile {
+            get {
+                return ((bool)(this["IsIgnoreUnchangeFile"]));
+            }
+            set {
+                this["IsIgnoreUnchangeFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("bin,obj")]
+        public string IgnoreFolder {
+            get {
+                return ((string)(this["IgnoreFolder"]));
+            }
+            set {
+                this["IgnoreFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCaseSensitive {
+            get {
+                return ((bool)(this["IsCaseSensitive"]));
+            }
+            set {
+                this["IsCaseSensitive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte ConvertMode {
+            get {
+                return ((byte)(this["ConvertMode"]));
+            }
+            set {
+                this["ConvertMode"] = value;
             }
         }
     }
