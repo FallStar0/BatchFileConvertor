@@ -39,6 +39,9 @@ namespace BatchFileConvertor
 
             context.CurrentCount = 0;
 
+            if (!Directory.Exists(context.RootOutputDirectory))
+                Directory.CreateDirectory(context.RootOutputDirectory);
+
             if (File.Exists(context.RootInputDirectory))
             {
                 var f = context.RootInputDirectory;
