@@ -14,6 +14,6 @@ namespace BatchFileConvertor
         /// <summary>
         /// 版本
         /// </summary>
-        public const string AppVersion = "1.3.1";
+        public const string AppVersion = "1.3.2";
     }
 }

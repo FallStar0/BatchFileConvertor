@@ -38,6 +38,9 @@
             this.txtBrowseIn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbOutputUTF8 = new System.Windows.Forms.RadioButton();
+            this.rbOutputDefault = new System.Windows.Forms.RadioButton();
             this.llbGitee = new System.Windows.Forms.LinkLabel();
             this.llbGithub = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,25 +52,32 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnBrowseOut = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbOutputUTF8 = new System.Windows.Forms.RadioButton();
-            this.rbOutputDefault = new System.Windows.Forms.RadioButton();
             this.cbIsCaseSensitive = new System.Windows.Forms.CheckBox();
             this.cbIgoreUnchangeFile = new System.Windows.Forms.CheckBox();
             this.cbIsRecursive = new System.Windows.Forms.CheckBox();
             this.txtIgoreFolder = new System.Windows.Forms.TextBox();
             this.txtSubfix = new System.Windows.Forms.TextBox();
             this.txtBrowseOut = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtTextSource = new System.Windows.Forms.TextBox();
+            this.txtTextTarget = new System.Windows.Forms.TextBox();
+            this.btnTextToCHS = new System.Windows.Forms.Button();
+            this.btnTextToCHT = new System.Windows.Forms.Button();
+            this.btnTextCopy = new System.Windows.Forms.Button();
+            this.btnTextClear = new System.Windows.Forms.Button();
+            this.btnTextPaste = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -177,6 +187,39 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "配置";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbOutputUTF8);
+            this.groupBox2.Controls.Add(this.rbOutputDefault);
+            this.groupBox2.Location = new System.Drawing.Point(9, 320);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(223, 92);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "输出编码";
+            // 
+            // rbOutputUTF8
+            // 
+            this.rbOutputUTF8.AutoSize = true;
+            this.rbOutputUTF8.Location = new System.Drawing.Point(6, 60);
+            this.rbOutputUTF8.Name = "rbOutputUTF8";
+            this.rbOutputUTF8.Size = new System.Drawing.Size(106, 25);
+            this.rbOutputUTF8.TabIndex = 0;
+            this.rbOutputUTF8.TabStop = true;
+            this.rbOutputUTF8.Text = "UTF-8编码";
+            this.rbOutputUTF8.UseVisualStyleBackColor = true;
+            // 
+            // rbOutputDefault
+            // 
+            this.rbOutputDefault.AutoSize = true;
+            this.rbOutputDefault.Location = new System.Drawing.Point(7, 29);
+            this.rbOutputDefault.Name = "rbOutputDefault";
+            this.rbOutputDefault.Size = new System.Drawing.Size(92, 25);
+            this.rbOutputDefault.TabIndex = 0;
+            this.rbOutputDefault.TabStop = true;
+            this.rbOutputDefault.Text = "默认编码";
+            this.rbOutputDefault.UseVisualStyleBackColor = true;
             // 
             // llbGitee
             // 
@@ -290,39 +333,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "输出路径(可以拖动文件夹进去)：";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbOutputUTF8);
-            this.groupBox2.Controls.Add(this.rbOutputDefault);
-            this.groupBox2.Location = new System.Drawing.Point(9, 320);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(223, 92);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "输出编码";
-            // 
-            // rbOutputUTF8
-            // 
-            this.rbOutputUTF8.AutoSize = true;
-            this.rbOutputUTF8.Location = new System.Drawing.Point(6, 60);
-            this.rbOutputUTF8.Name = "rbOutputUTF8";
-            this.rbOutputUTF8.Size = new System.Drawing.Size(106, 25);
-            this.rbOutputUTF8.TabIndex = 0;
-            this.rbOutputUTF8.TabStop = true;
-            this.rbOutputUTF8.Text = "UTF-8编码";
-            this.rbOutputUTF8.UseVisualStyleBackColor = true;
-            // 
-            // rbOutputDefault
-            // 
-            this.rbOutputDefault.AutoSize = true;
-            this.rbOutputDefault.Location = new System.Drawing.Point(7, 29);
-            this.rbOutputDefault.Name = "rbOutputDefault";
-            this.rbOutputDefault.Size = new System.Drawing.Size(92, 25);
-            this.rbOutputDefault.TabIndex = 0;
-            this.rbOutputDefault.TabStop = true;
-            this.rbOutputDefault.Text = "默认编码";
-            this.rbOutputDefault.UseVisualStyleBackColor = true;
-            // 
             // cbIsCaseSensitive
             // 
             this.cbIsCaseSensitive.AutoSize = true;
@@ -393,6 +403,93 @@
             this.txtBrowseOut.TabIndex = 1;
             this.txtBrowseOut.Text = global::BatchFileConvertor.Properties.Settings.Default.OutputDir;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnTextPaste);
+            this.tabPage2.Controls.Add(this.btnTextClear);
+            this.tabPage2.Controls.Add(this.btnTextCopy);
+            this.tabPage2.Controls.Add(this.btnTextToCHT);
+            this.tabPage2.Controls.Add(this.btnTextToCHS);
+            this.tabPage2.Controls.Add(this.txtTextTarget);
+            this.tabPage2.Controls.Add(this.txtTextSource);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(533, 448);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "文本转换";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtTextSource
+            // 
+            this.txtTextSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTextSource.Location = new System.Drawing.Point(8, 6);
+            this.txtTextSource.MaxLength = 1000;
+            this.txtTextSource.Multiline = true;
+            this.txtTextSource.Name = "txtTextSource";
+            this.txtTextSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTextSource.Size = new System.Drawing.Size(517, 184);
+            this.txtTextSource.TabIndex = 0;
+            // 
+            // txtTextTarget
+            // 
+            this.txtTextTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTextTarget.Location = new System.Drawing.Point(8, 246);
+            this.txtTextTarget.MaxLength = 1000;
+            this.txtTextTarget.Multiline = true;
+            this.txtTextTarget.Name = "txtTextTarget";
+            this.txtTextTarget.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTextTarget.Size = new System.Drawing.Size(517, 194);
+            this.txtTextTarget.TabIndex = 0;
+            // 
+            // btnTextToCHS
+            // 
+            this.btnTextToCHS.Location = new System.Drawing.Point(8, 196);
+            this.btnTextToCHS.Name = "btnTextToCHS";
+            this.btnTextToCHS.Size = new System.Drawing.Size(125, 44);
+            this.btnTextToCHS.TabIndex = 1;
+            this.btnTextToCHS.Text = "转为简体↓";
+            this.btnTextToCHS.UseVisualStyleBackColor = true;
+            // 
+            // btnTextToCHT
+            // 
+            this.btnTextToCHT.Location = new System.Drawing.Point(139, 196);
+            this.btnTextToCHT.Name = "btnTextToCHT";
+            this.btnTextToCHT.Size = new System.Drawing.Size(125, 44);
+            this.btnTextToCHT.TabIndex = 1;
+            this.btnTextToCHT.Text = "转为繁体↓";
+            this.btnTextToCHT.UseVisualStyleBackColor = true;
+            // 
+            // btnTextCopy
+            // 
+            this.btnTextCopy.Location = new System.Drawing.Point(457, 196);
+            this.btnTextCopy.Name = "btnTextCopy";
+            this.btnTextCopy.Size = new System.Drawing.Size(68, 44);
+            this.btnTextCopy.TabIndex = 1;
+            this.btnTextCopy.Text = "复制↓";
+            this.btnTextCopy.UseVisualStyleBackColor = true;
+            // 
+            // btnTextClear
+            // 
+            this.btnTextClear.Location = new System.Drawing.Point(383, 196);
+            this.btnTextClear.Name = "btnTextClear";
+            this.btnTextClear.Size = new System.Drawing.Size(68, 44);
+            this.btnTextClear.TabIndex = 1;
+            this.btnTextClear.Text = "清空↑";
+            this.btnTextClear.UseVisualStyleBackColor = true;
+            // 
+            // btnTextPaste
+            // 
+            this.btnTextPaste.Location = new System.Drawing.Point(309, 196);
+            this.btnTextPaste.Name = "btnTextPaste";
+            this.btnTextPaste.Size = new System.Drawing.Size(68, 44);
+            this.btnTextPaste.TabIndex = 1;
+            this.btnTextPaste.Text = "粘贴↑";
+            this.btnTextPaste.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -411,10 +508,12 @@
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -450,6 +549,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbOutputUTF8;
         private System.Windows.Forms.RadioButton rbOutputDefault;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox txtTextSource;
+        private System.Windows.Forms.TextBox txtTextTarget;
+        private System.Windows.Forms.Button btnTextToCHS;
+        private System.Windows.Forms.Button btnTextToCHT;
+        private System.Windows.Forms.Button btnTextCopy;
+        private System.Windows.Forms.Button btnTextPaste;
+        private System.Windows.Forms.Button btnTextClear;
     }
 }
 

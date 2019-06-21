@@ -1,45 +1,52 @@
-# 批量文件转换器
+# BatchFileConvertor for Chinese Simplified and Traditional
 
-## 介绍
-名称：BatchFileConvertor          
-功能：    
-主要用于将单个或者批量递归将目录里面的文件文本转换为对应的简体中文或者繁体中文。
+## Introduction
+Name : BatchFileConvertor          
+Function :     
+It is mainly used to convert the file text in the catalog into simplified or traditional Chinese by single or batch recursion.
 
-## 运行环境
+## Operating environment
 
-.Net Framework 4.5.2(Win10自带了)   
+.Net Framework 4.5.2(Win10 has included)   
 
-## 其它
-【VisualBasic模式】这是使用 Microsoft.VisualBasic.dll 作为转换组件，在非中文系统可以使用，如果是转换ASP.NET 的CS文件的话，会报错，其它类型文件没问题。
+## Other
+[VisualBasic Mode] This function use Microsoft.VisualBasic.dll as the convertion component, it can be use in all system. For ASP.NET cs or cshtml files will case error.
 
-【系统模式】这个要求自身系统是中文，如果符合条件，推荐使用这个。
+[System Mode] This requirement is that the system itself is Chinese. If it meets the requirements, it is recommended to use this.
 
-## 界面
+## UI
 
 ![shot](/Assets/Shot1.jpg "shot")
 
 
 ![shot](/Assets/Shot2.jpg "shot")
 
-## 日志
 
-### v1.3.1 201190611
->1. 修复输出目录不存在的时候报错，现在会创建目录。
+![shot](/Assets/Shot3.jpg "shot")
+
+## Update Log
+
+### v1.3.2 20190621
+>1. A new panel is added to copy and paste text directly for direct conversion.
+
+
+### v1.3.1 20190611
+>1. Fix an error when the output directory does not exist, and now create the directory.
 
 
 ### v1.3 20190605
->1. 新增 拖动单个文件到输入框，允许转换单个文件。
+>1. Add drag a single file to the input box to allow the conversion of a single file.
 
->2. 新增 自动识别文件编码格式，绝大部分情况不会因为编码格式导致转换不了。
+>2. New automatic identification file encoding format, most of the cases will not be due to the encoding format can not be converted.
 
->3. 新增 文件编码输出选项，现在可以选择默认格式（和源文件一样）或者UTF8 编码格式。
+>3. With the new file encoding output option, you can now choose the default format (the same as the source file) or UTF8 encoding format.
 
->4. 新增 图标。
+>4. Add icons.
 
 ### v1.2 20190605
->1. 新增 转换模式，【VisualBasic模式】这是使用 Microsoft.VisualBasic.dll 作为转换组件，【系统模式】使用系统的 kernel32.dll 里面的方法转换。
+>1. Added conversion mode, [VisualBasic Mode] Use Microsoft.VisualBasic.dll ,[System Mode] Use kernel32.dll .
 
->2. 新增 拖动文件夹支持。
+>2. Add drag folder support.
 
->3. 新增 忽略目录、大小写敏感、忽略没更改文件 选项。  
+>3. Added ignore directory, case sensitive, ignore not changing file options.
 

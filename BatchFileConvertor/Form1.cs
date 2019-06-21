@@ -98,6 +98,8 @@ namespace BatchFileConvertor
 
             llbGitee.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://gitee.com/fallstar/BatchFileConvertor");
             llbGithub.LinkClicked += (s, e) => System.Diagnostics.Process.Start("https://github.com/FallStar0/BatchFileConvertor");
+
+            InitTabText();
         }
 
         #endregion
@@ -230,6 +232,52 @@ namespace BatchFileConvertor
             }
         }
 
+        #endregion
+
+        #region 文本面板
+        /// <summary>
+        /// 初始化面板
+        /// </summary>
+        private void InitTabText()
+        {
+            btnTextClear.Click += (s, e) => txtTextSource.Clear();
+            btnTextCopy.Click += (s, e) =>
+            {
+                var t = txtTextTarget.Text;
+                if (string.IsNullOrEmpty(t))
+                    return;
+                Clipboard.SetText(t);
+            };
+            btnTextPaste.Click += (s, e) => txtTextSource.Text = Clipboard.GetText();
+
+            btnTextToCHT.Click += (s, e) =>
+            {
+                var t = txtTextSource.Text;
+                if (string.IsNullOrEmpty(t)) return;
+                var prop = Properties.Settings.Default;
+                Func<string, string> func;
+                if (prop.ConvertMode == 0)
+                    func = logic.ToCHT;
+                else
+                    func = ChineseStringUtility.ToTraditional;
+                t = func(t);
+                txtTextTarget.Text = t;
+            };
+
+            btnTextToCHS.Click += (s, e) =>
+            {
+                var t = txtTextSource.Text;
+                if (string.IsNullOrEmpty(t)) return;
+                var prop = Properties.Settings.Default;
+                Func<string, string> func;
+                if (prop.ConvertMode == 0)
+                    func = logic.ToCHS;
+                else
+                    func = ChineseStringUtility.ToSimplified;
+                t = func(t);
+                txtTextTarget.Text = t;
+            };
+        }
         #endregion
     }
 }
