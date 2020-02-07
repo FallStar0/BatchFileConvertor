@@ -37,6 +37,14 @@
             this.btnBrowseIn = new System.Windows.Forms.Button();
             this.txtBrowseIn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnTextPaste = new System.Windows.Forms.Button();
+            this.btnTextClear = new System.Windows.Forms.Button();
+            this.btnTextCopy = new System.Windows.Forms.Button();
+            this.btnTextToCHT = new System.Windows.Forms.Button();
+            this.btnTextToCHS = new System.Windows.Forms.Button();
+            this.txtTextTarget = new System.Windows.Forms.TextBox();
+            this.txtTextSource = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbOutputUTF8 = new System.Windows.Forms.RadioButton();
@@ -58,20 +66,12 @@
             this.txtIgoreFolder = new System.Windows.Forms.TextBox();
             this.txtSubfix = new System.Windows.Forms.TextBox();
             this.txtBrowseOut = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtTextSource = new System.Windows.Forms.TextBox();
-            this.txtTextTarget = new System.Windows.Forms.TextBox();
-            this.btnTextToCHS = new System.Windows.Forms.Button();
-            this.btnTextToCHT = new System.Windows.Forms.Button();
-            this.btnTextCopy = new System.Windows.Forms.Button();
-            this.btnTextClear = new System.Windows.Forms.Button();
-            this.btnTextPaste = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -83,7 +83,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(541, 482);
+            this.tabControl1.Size = new System.Drawing.Size(541, 550);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -94,10 +94,10 @@
             this.tabPage1.Controls.Add(this.btnBrowseIn);
             this.tabPage1.Controls.Add(this.txtBrowseIn);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(533, 448);
+            this.tabPage1.Size = new System.Drawing.Size(533, 510);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "转换";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(519, 245);
+            this.txtLog.Size = new System.Drawing.Size(519, 341);
             this.txtLog.TabIndex = 7;
             // 
             // btnToCHS
@@ -150,7 +150,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBrowseIn.Location = new System.Drawing.Point(13, 39);
             this.txtBrowseIn.Name = "txtBrowseIn";
-            this.txtBrowseIn.Size = new System.Drawing.Size(445, 29);
+            this.txtBrowseIn.Size = new System.Drawing.Size(445, 34);
             this.txtBrowseIn.TabIndex = 3;
             // 
             // label1
@@ -158,9 +158,96 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 21);
+            this.label1.Size = new System.Drawing.Size(306, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "输入路径(可以拖动文件夹进去)：";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnTextPaste);
+            this.tabPage2.Controls.Add(this.btnTextClear);
+            this.tabPage2.Controls.Add(this.btnTextCopy);
+            this.tabPage2.Controls.Add(this.btnTextToCHT);
+            this.tabPage2.Controls.Add(this.btnTextToCHS);
+            this.tabPage2.Controls.Add(this.txtTextTarget);
+            this.tabPage2.Controls.Add(this.txtTextSource);
+            this.tabPage2.Location = new System.Drawing.Point(4, 36);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(533, 510);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "文本转换";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnTextPaste
+            // 
+            this.btnTextPaste.Location = new System.Drawing.Point(309, 196);
+            this.btnTextPaste.Name = "btnTextPaste";
+            this.btnTextPaste.Size = new System.Drawing.Size(68, 44);
+            this.btnTextPaste.TabIndex = 1;
+            this.btnTextPaste.Text = "粘贴↑";
+            this.btnTextPaste.UseVisualStyleBackColor = true;
+            // 
+            // btnTextClear
+            // 
+            this.btnTextClear.Location = new System.Drawing.Point(383, 196);
+            this.btnTextClear.Name = "btnTextClear";
+            this.btnTextClear.Size = new System.Drawing.Size(68, 44);
+            this.btnTextClear.TabIndex = 1;
+            this.btnTextClear.Text = "清空↑";
+            this.btnTextClear.UseVisualStyleBackColor = true;
+            // 
+            // btnTextCopy
+            // 
+            this.btnTextCopy.Location = new System.Drawing.Point(457, 196);
+            this.btnTextCopy.Name = "btnTextCopy";
+            this.btnTextCopy.Size = new System.Drawing.Size(68, 44);
+            this.btnTextCopy.TabIndex = 1;
+            this.btnTextCopy.Text = "复制↓";
+            this.btnTextCopy.UseVisualStyleBackColor = true;
+            // 
+            // btnTextToCHT
+            // 
+            this.btnTextToCHT.Location = new System.Drawing.Point(139, 196);
+            this.btnTextToCHT.Name = "btnTextToCHT";
+            this.btnTextToCHT.Size = new System.Drawing.Size(125, 44);
+            this.btnTextToCHT.TabIndex = 1;
+            this.btnTextToCHT.Text = "转为繁体↓";
+            this.btnTextToCHT.UseVisualStyleBackColor = true;
+            // 
+            // btnTextToCHS
+            // 
+            this.btnTextToCHS.Location = new System.Drawing.Point(8, 196);
+            this.btnTextToCHS.Name = "btnTextToCHS";
+            this.btnTextToCHS.Size = new System.Drawing.Size(125, 44);
+            this.btnTextToCHS.TabIndex = 1;
+            this.btnTextToCHS.Text = "转为简体↓";
+            this.btnTextToCHS.UseVisualStyleBackColor = true;
+            // 
+            // txtTextTarget
+            // 
+            this.txtTextTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTextTarget.Location = new System.Drawing.Point(8, 246);
+            this.txtTextTarget.MaxLength = 1000;
+            this.txtTextTarget.Multiline = true;
+            this.txtTextTarget.Name = "txtTextTarget";
+            this.txtTextTarget.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTextTarget.Size = new System.Drawing.Size(517, 262);
+            this.txtTextTarget.TabIndex = 0;
+            // 
+            // txtTextSource
+            // 
+            this.txtTextSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTextSource.Location = new System.Drawing.Point(8, 6);
+            this.txtTextSource.MaxLength = 1000;
+            this.txtTextSource.Multiline = true;
+            this.txtTextSource.Name = "txtTextSource";
+            this.txtTextSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTextSource.Size = new System.Drawing.Size(517, 184);
+            this.txtTextSource.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -180,10 +267,10 @@
             this.tabPage3.Controls.Add(this.txtIgoreFolder);
             this.tabPage3.Controls.Add(this.txtSubfix);
             this.tabPage3.Controls.Add(this.txtBrowseOut);
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Location = new System.Drawing.Point(4, 36);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(533, 448);
+            this.tabPage3.Size = new System.Drawing.Size(533, 510);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "配置";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -204,7 +291,7 @@
             this.rbOutputUTF8.AutoSize = true;
             this.rbOutputUTF8.Location = new System.Drawing.Point(6, 60);
             this.rbOutputUTF8.Name = "rbOutputUTF8";
-            this.rbOutputUTF8.Size = new System.Drawing.Size(106, 25);
+            this.rbOutputUTF8.Size = new System.Drawing.Size(131, 31);
             this.rbOutputUTF8.TabIndex = 0;
             this.rbOutputUTF8.TabStop = true;
             this.rbOutputUTF8.Text = "UTF-8编码";
@@ -215,7 +302,7 @@
             this.rbOutputDefault.AutoSize = true;
             this.rbOutputDefault.Location = new System.Drawing.Point(7, 29);
             this.rbOutputDefault.Name = "rbOutputDefault";
-            this.rbOutputDefault.Size = new System.Drawing.Size(92, 25);
+            this.rbOutputDefault.Size = new System.Drawing.Size(113, 31);
             this.rbOutputDefault.TabIndex = 0;
             this.rbOutputDefault.TabStop = true;
             this.rbOutputDefault.Text = "默认编码";
@@ -227,7 +314,7 @@
             this.llbGitee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.llbGitee.Location = new System.Drawing.Point(77, 415);
             this.llbGitee.Name = "llbGitee";
-            this.llbGitee.Size = new System.Drawing.Size(82, 21);
+            this.llbGitee.Size = new System.Drawing.Size(101, 27);
             this.llbGitee.TabIndex = 8;
             this.llbGitee.TabStop = true;
             this.llbGitee.Text = "码云Gitee";
@@ -238,7 +325,7 @@
             this.llbGithub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.llbGithub.Location = new System.Drawing.Point(9, 415);
             this.llbGithub.Name = "llbGithub";
-            this.llbGithub.Size = new System.Drawing.Size(62, 21);
+            this.llbGithub.Size = new System.Drawing.Size(76, 27);
             this.llbGithub.TabIndex = 8;
             this.llbGithub.TabStop = true;
             this.llbGithub.Text = "Github";
@@ -249,7 +336,7 @@
             this.groupBox1.Controls.Add(this.rbVBMode);
             this.groupBox1.Location = new System.Drawing.Point(268, 224);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(233, 90);
+            this.groupBox1.Size = new System.Drawing.Size(257, 90);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "转换模式";
@@ -259,7 +346,7 @@
             this.rbSysMode.AutoSize = true;
             this.rbSysMode.Location = new System.Drawing.Point(6, 60);
             this.rbSysMode.Name = "rbSysMode";
-            this.rbSysMode.Size = new System.Drawing.Size(198, 25);
+            this.rbSysMode.Size = new System.Drawing.Size(247, 31);
             this.rbSysMode.TabIndex = 0;
             this.rbSysMode.TabStop = true;
             this.rbSysMode.Text = "系统模式(需要中文系统)";
@@ -270,7 +357,7 @@
             this.rbVBMode.AutoSize = true;
             this.rbVBMode.Location = new System.Drawing.Point(7, 29);
             this.rbVBMode.Name = "rbVBMode";
-            this.rbVBMode.Size = new System.Drawing.Size(143, 25);
+            this.rbVBMode.Size = new System.Drawing.Size(177, 31);
             this.rbVBMode.TabIndex = 0;
             this.rbVBMode.TabStop = true;
             this.rbVBMode.Text = "VisualBasic模式";
@@ -279,7 +366,7 @@
             // btnConfigReset
             // 
             this.btnConfigReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfigReset.Location = new System.Drawing.Point(285, 384);
+            this.btnConfigReset.Location = new System.Drawing.Point(285, 452);
             this.btnConfigReset.Name = "btnConfigReset";
             this.btnConfigReset.Size = new System.Drawing.Size(96, 52);
             this.btnConfigReset.TabIndex = 5;
@@ -289,7 +376,7 @@
             // btnConfigApply
             // 
             this.btnConfigApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfigApply.Location = new System.Drawing.Point(405, 384);
+            this.btnConfigApply.Location = new System.Drawing.Point(405, 452);
             this.btnConfigApply.Name = "btnConfigApply";
             this.btnConfigApply.Size = new System.Drawing.Size(96, 52);
             this.btnConfigApply.TabIndex = 5;
@@ -301,7 +388,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 21);
+            this.label4.Size = new System.Drawing.Size(246, 27);
             this.label4.TabIndex = 4;
             this.label4.Text = "忽略目录(英文逗号分隔)：";
             // 
@@ -310,7 +397,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(212, 21);
+            this.label3.Size = new System.Drawing.Size(266, 27);
             this.label3.TabIndex = 4;
             this.label3.Text = "支持拓展名(英文逗号分隔)：";
             // 
@@ -329,7 +416,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 21);
+            this.label2.Size = new System.Drawing.Size(306, 27);
             this.label2.TabIndex = 0;
             this.label2.Text = "输出路径(可以拖动文件夹进去)：";
             // 
@@ -340,7 +427,7 @@
             this.cbIsCaseSensitive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BatchFileConvertor.Properties.Settings.Default, "IsCaseSensitive", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cbIsCaseSensitive.Location = new System.Drawing.Point(9, 224);
             this.cbIsCaseSensitive.Name = "cbIsCaseSensitive";
-            this.cbIsCaseSensitive.Size = new System.Drawing.Size(109, 25);
+            this.cbIsCaseSensitive.Size = new System.Drawing.Size(134, 31);
             this.cbIsCaseSensitive.TabIndex = 6;
             this.cbIsCaseSensitive.Text = "大小写敏感";
             this.cbIsCaseSensitive.UseVisualStyleBackColor = true;
@@ -353,7 +440,7 @@
             this.cbIgoreUnchangeFile.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BatchFileConvertor.Properties.Settings.Default, "IsIgnoreUnchangeFile", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cbIgoreUnchangeFile.Location = new System.Drawing.Point(9, 289);
             this.cbIgoreUnchangeFile.Name = "cbIgoreUnchangeFile";
-            this.cbIgoreUnchangeFile.Size = new System.Drawing.Size(157, 25);
+            this.cbIgoreUnchangeFile.Size = new System.Drawing.Size(194, 31);
             this.cbIgoreUnchangeFile.TabIndex = 6;
             this.cbIgoreUnchangeFile.Text = "忽略没更改的文件";
             this.cbIgoreUnchangeFile.UseVisualStyleBackColor = true;
@@ -365,7 +452,7 @@
             this.cbIsRecursive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbIsRecursive.Location = new System.Drawing.Point(9, 256);
             this.cbIsRecursive.Name = "cbIsRecursive";
-            this.cbIsRecursive.Size = new System.Drawing.Size(141, 25);
+            this.cbIsRecursive.Size = new System.Drawing.Size(174, 31);
             this.cbIsRecursive.TabIndex = 3;
             this.cbIsRecursive.Text = "是否递归子目录";
             this.cbIsRecursive.UseVisualStyleBackColor = true;
@@ -377,7 +464,7 @@
             this.txtIgoreFolder.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BatchFileConvertor.Properties.Settings.Default, "IgnoreFolder", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtIgoreFolder.Location = new System.Drawing.Point(9, 185);
             this.txtIgoreFolder.Name = "txtIgoreFolder";
-            this.txtIgoreFolder.Size = new System.Drawing.Size(449, 29);
+            this.txtIgoreFolder.Size = new System.Drawing.Size(449, 34);
             this.txtIgoreFolder.TabIndex = 1;
             this.txtIgoreFolder.Text = global::BatchFileConvertor.Properties.Settings.Default.IgnoreFolder;
             // 
@@ -388,7 +475,7 @@
             this.txtSubfix.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BatchFileConvertor.Properties.Settings.Default, "SupportSubfix", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtSubfix.Location = new System.Drawing.Point(9, 114);
             this.txtSubfix.Name = "txtSubfix";
-            this.txtSubfix.Size = new System.Drawing.Size(449, 29);
+            this.txtSubfix.Size = new System.Drawing.Size(449, 34);
             this.txtSubfix.TabIndex = 1;
             this.txtSubfix.Text = global::BatchFileConvertor.Properties.Settings.Default.SupportSubfix;
             // 
@@ -399,102 +486,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBrowseOut.Location = new System.Drawing.Point(13, 38);
             this.txtBrowseOut.Name = "txtBrowseOut";
-            this.txtBrowseOut.Size = new System.Drawing.Size(445, 29);
+            this.txtBrowseOut.Size = new System.Drawing.Size(445, 34);
             this.txtBrowseOut.TabIndex = 1;
             this.txtBrowseOut.Text = global::BatchFileConvertor.Properties.Settings.Default.OutputDir;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.btnTextPaste);
-            this.tabPage2.Controls.Add(this.btnTextClear);
-            this.tabPage2.Controls.Add(this.btnTextCopy);
-            this.tabPage2.Controls.Add(this.btnTextToCHT);
-            this.tabPage2.Controls.Add(this.btnTextToCHS);
-            this.tabPage2.Controls.Add(this.txtTextTarget);
-            this.tabPage2.Controls.Add(this.txtTextSource);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(533, 448);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "文本转换";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // txtTextSource
-            // 
-            this.txtTextSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTextSource.Location = new System.Drawing.Point(8, 6);
-            this.txtTextSource.MaxLength = 1000;
-            this.txtTextSource.Multiline = true;
-            this.txtTextSource.Name = "txtTextSource";
-            this.txtTextSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTextSource.Size = new System.Drawing.Size(517, 184);
-            this.txtTextSource.TabIndex = 0;
-            // 
-            // txtTextTarget
-            // 
-            this.txtTextTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTextTarget.Location = new System.Drawing.Point(8, 246);
-            this.txtTextTarget.MaxLength = 1000;
-            this.txtTextTarget.Multiline = true;
-            this.txtTextTarget.Name = "txtTextTarget";
-            this.txtTextTarget.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTextTarget.Size = new System.Drawing.Size(517, 194);
-            this.txtTextTarget.TabIndex = 0;
-            // 
-            // btnTextToCHS
-            // 
-            this.btnTextToCHS.Location = new System.Drawing.Point(8, 196);
-            this.btnTextToCHS.Name = "btnTextToCHS";
-            this.btnTextToCHS.Size = new System.Drawing.Size(125, 44);
-            this.btnTextToCHS.TabIndex = 1;
-            this.btnTextToCHS.Text = "转为简体↓";
-            this.btnTextToCHS.UseVisualStyleBackColor = true;
-            // 
-            // btnTextToCHT
-            // 
-            this.btnTextToCHT.Location = new System.Drawing.Point(139, 196);
-            this.btnTextToCHT.Name = "btnTextToCHT";
-            this.btnTextToCHT.Size = new System.Drawing.Size(125, 44);
-            this.btnTextToCHT.TabIndex = 1;
-            this.btnTextToCHT.Text = "转为繁体↓";
-            this.btnTextToCHT.UseVisualStyleBackColor = true;
-            // 
-            // btnTextCopy
-            // 
-            this.btnTextCopy.Location = new System.Drawing.Point(457, 196);
-            this.btnTextCopy.Name = "btnTextCopy";
-            this.btnTextCopy.Size = new System.Drawing.Size(68, 44);
-            this.btnTextCopy.TabIndex = 1;
-            this.btnTextCopy.Text = "复制↓";
-            this.btnTextCopy.UseVisualStyleBackColor = true;
-            // 
-            // btnTextClear
-            // 
-            this.btnTextClear.Location = new System.Drawing.Point(383, 196);
-            this.btnTextClear.Name = "btnTextClear";
-            this.btnTextClear.Size = new System.Drawing.Size(68, 44);
-            this.btnTextClear.TabIndex = 1;
-            this.btnTextClear.Text = "清空↑";
-            this.btnTextClear.UseVisualStyleBackColor = true;
-            // 
-            // btnTextPaste
-            // 
-            this.btnTextPaste.Location = new System.Drawing.Point(309, 196);
-            this.btnTextPaste.Name = "btnTextPaste";
-            this.btnTextPaste.Size = new System.Drawing.Size(68, 44);
-            this.btnTextPaste.TabIndex = 1;
-            this.btnTextPaste.Text = "粘贴↑";
-            this.btnTextPaste.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 482);
+            this.ClientSize = new System.Drawing.Size(541, 550);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -506,14 +506,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
